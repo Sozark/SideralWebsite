@@ -182,11 +182,10 @@ if (productGrid) {
 
   filterBtns.forEach(btn => {
     btn.addEventListener("click", () => {
+
+      const filter = btn.dataset.filter; /* FIX: filter is now read here, inside the click handler */
       filterBtns.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
-
-      /* FIX: filter is now read here, inside the click handler */
-      const filter = btn.dataset.filter;
 
       cards.forEach(card => {
         const show = filter === "all" || card.dataset.category === filter;

@@ -1,7 +1,5 @@
 /* =====================================================
-   Sidèral — main.css
-   Speakeasy Luxury Aesthetic
-   Warm charcoal · Cognac amber · Candlelight glow
+   Sidèral — main.cssxs
 ===================================================== */
 
 /* ----------- Color Palette ---------- */
@@ -203,7 +201,6 @@ main {
     transform: translateX(-100%);
     width: var(--panel-w);
     height: 100vh;
-    /* Deep warm black with subtle vignette */
      background:
         radial-gradient(ellipse 120% 60% at -10% 30%, rgba(212,100,154,0.09) 0%, transparent 60%),
         linear-gradient(170deg, #1e0012 0%, #110008 55%, #0c0008 100%);
@@ -222,7 +219,7 @@ main {
     transform: translateX(0);
 }
 
-/* ----------- Candlelight Glow Top Left ---------- */
+/* -----------  Glow Top Left ---------- */
 .mobile-menu::before {
     content: '';
     position: absolute;
@@ -257,7 +254,7 @@ main {
     border-bottom: 1px solid rgba(200, 58, 181, 0.18);
 }
 
-/* ----------- Amber Accent Line Under Menu Header ---------- */
+/* -----------  Accent Line Under Menu Header ---------- */
 .menu-header::after {
     content: '';
     position: absolute;
@@ -332,7 +329,7 @@ main {
     transition: opacity 0.25s;
 }
 
-/* ----------- Amber Left Accent Bar on Hover ---------- */
+/* ----------- Left Accent Bar on Hover ---------- */
 .mobile-menu a::before {
     content: '';
     position: absolute;
@@ -406,7 +403,7 @@ main {
    BUTTONS
 ===================================================== */
 
-/* ----------- Primary Button — Warm Amber ---------- */
+/* ----------- Primary Button ---------- */
 .btn-primary {
     display: inline-block;
     background: transparent;
@@ -478,7 +475,7 @@ main {
 .page-hero {
     text-align: center;
     padding: 70px 20px 40px;
-    font-family: 'Cormont Garamond'; 
+    font-family: 'Cormorant Garamond'; 
 }
 
 /* ----------- Eyebrow Label ---------- */
@@ -555,7 +552,7 @@ main {
     z-index: 0;
 }
 
-/* ----------- Warm Candlelight Dim Over Video ---------- */
+/* ----------- Dim Over Video ---------- */
 /* Darker at edges, lighter in center like a spotlight */
 .hero__dim {
     position: absolute;
@@ -599,7 +596,7 @@ main {
     margin-bottom: 24px;
     opacity: 0;
     animation: fadeUp 1s ease 0.55s forwards;
-    /* Warm candlelight text glow */
+    /* text glow */
     text-shadow: 0 0 60px rgba(200, 137, 58, 0.12);
 }
 
@@ -701,7 +698,7 @@ main {
     padding: 0 24px;
 }
 
-/* ----------- Amber Diamond Separators ---------- */
+/* -----------  Diamond Separators ---------- */
 .marquee__sep {
     color: var(--amber) !important;
     opacity: 0.5;
@@ -722,7 +719,7 @@ main {
     max-width: 820px;
     margin: 0 auto;
     text-align: center;
-    /* Subtle horizontal amber rule above */
+    /* Subtle horizontal rule above */
     border-top: 1px solid rgba(200, 137, 58, 0.1);
 }
 
@@ -851,7 +848,6 @@ main {
 
 .feat-card:hover .feat-card__img { transform: scale(1.05); }
 
-/* ----------- Warm Gradient Placeholders ---------- */
 .feat-card__img--1 { background: url(/images/MockupSerum.jpg) center / cover no-repeat; }
 .feat-card__img--2 { background: url(/images/EyePallette.jpg) center / cover no-repeat; }
 .feat-card__img--3 { background: url(/images/BodyOil.jpg) center / cover no-repeat; }
@@ -924,7 +920,7 @@ main {
 
 .banner:hover .banner__img { transform: scale(1.0); }
 
-/* ----------- Warm Vignette Over Banner ---------- */
+/* ----------- Vignette Over Banner ---------- */
 .banner__dim {
     position: absolute;
     inset: 0;
@@ -1087,7 +1083,6 @@ main {
     transform: scale(0.98);
 }
 
-/* ----------- Warm Placeholder Gradients ---------- */
 .gallery__cell--1 { background: url(/images/Kwesi.jpg) center / cover no-repeat; }
 .gallery__cell--2 { background: url(/images/Gideon-Hezekiah.jpg) center / cover no-repeat; }
 .gallery__cell--3 { background: url(/images/KhaliifaHussein.jpg) center / cover no-repeat; }
@@ -1847,7 +1842,6 @@ main {
     aspect-ratio: 3 / 4;
 }
 
-/* ----------- Warm Placeholder Gradients ---------- */
 .carousel__img--1 {background: url(/images/Gideon-Hezekiah.jpg) center / cover no-repeat; }
 .carousel__img--2 { background: url(/images/OyeShotThis.jpg) center / cover no-repeat; }
 .carousel__img--3 { background: url(/images/JessicaFelicio.jpg) center / cover no-repeat; }
@@ -1927,7 +1921,7 @@ main {
     .about-body { padding: 20px 20px 60px; }
 }
 
-/* ----------- Amber Left Border Accent ---------- */
+/* -----------  Left Border Accent ---------- */
 .about-block {
     border-left: 1px solid rgba(200, 137, 58, 0.22);
     padding-left: 32px;
