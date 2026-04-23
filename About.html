@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>About – Sidéral</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel+Decorative:wght@400;700&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/d0041be44b.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!--- Site Header --->
+  <header class="site-header">
+    <div class="nav-container">
+
+      <!--- Hamburger Menu Icon --->
+      <div class="hamburger" id="hamburger" aria-label="Open menu" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!--- Logo --->
+      <div class="logo">Sidéral</div>
+
+      <!--- Cart Icon — badge shows item count --->
+      <div class="cart-icon">
+        <i class="fa-solid fa-shopping-bag"></i>
+        <span id="cartBadge"></span>
+      </div>
+
+    </div>
+  </header>
+
+  <!--- Visual Overlay --->
+  <div class="overlay" id="overlay"></div>
+
+  <!--- Mobile Menu --->
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Site navigation">
+    <div class="menu-header">
+      <div class="menu-logo">Sidéral</div>
+      <div class="menu-tagline">Beyond Beauty · Cosmic Glow</div>
+    </div>
+
+    <div class="menu-nav">
+      <a href="index.html"><span class="link-num">01</span> Home</a>
+      <a href="Products.html"><span class="link-num">02</span> Products</a>
+      <a href="Booking.html"><span class="link-num">03</span> Booking</a>
+      <a href="Contact.html"><span class="link-num">04</span> Contact</a>
+    </div>
+
+    <div class="menu-footer">
+      <div class="menu-socials">
+        <a href="#">IG</a>
+        <a href="#">TK</a>
+        <a href="#">PT</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!--- Cart Panel — slides in from the right --->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <div class="cart-panel" id="cartPanel">
+    <div class="cart-panel__header">
+      <h2 class="cart-panel__title">Your Bag</h2>
+      <button class="cart-panel__close" onclick="closeCart()" aria-label="Close cart">✕</button>
+    </div>
+
+    <div class="cart-panel__items" id="cartItems">
+      <p class="cart-empty">Your bag is empty.</p>
+    </div>
+
+    <div class="cart-panel__footer">
+      <div class="cart-panel__total-row">
+        <span class="cart-panel__total-label">Total</span>
+        <span class="cart-panel__total-value" id="cartTotal">$0</span>
+      </div>
+
+      <button class="cart-panel__checkout">Checkout</button>
+    </div>
+  </div>
+  <div class="added-toast" id="addedToast"></div>
+
+  <!--- Main Content --->
+  <main>
+
+    <!--- Page Hero --->
+    <section class="page-hero">
+      <p class="page-hero__eyebrow">Our Story</p>
+      <h1 class="page-hero__title">About Sidéral</h1>
+    </section>
+
+    <!--- Photo Carousel --->
+    <section class="about-pairs">
+
+      <div class="about-pair">
+        <div class="about-pair__img about-pair__img--1"></div>
+        <div class="about-pair__text">
+          <p class="about-block__label">Who We Are</p>
+          <h2 class="about-block__heading">Beauty without limits.</h2>
+          <p class="about-block__text">Sidéral was founded on a single belief — that beauty should feel as expansive as the universe itself...</p>
+        </div>
+      </div>
+
+      <div class="about-pair">
+        <div class="about-pair__img about-pair__img--2"></div>
+        <div class="about-pair__text">
+          <p class="about-block__label">Our Mission</p>
+          <h2 class="about-block__heading">Elevate the glow within.</h2>
+          <p class="about-block__text">We exist to celebrate beauty in every form it takes...</p>
+        </div>
+      </div>
+
+      <div class="about-pair">
+        <div class="about-pair__img about-pair__img--3"></div>
+        <div class="about-pair__text">
+          <p class="about-block__label">The Vision</p>
+          <h2 class="about-block__heading">Where luxury meets the cosmos.</h2>
+          <p class="about-block__text">Small-batch production. Thoughtfully sourced ingredients...</p>
+        </div>
+      </div>
+
+  </section>
+
+  <!--- Site Footer --->
+  <footer class="site-footer">Created by Noah C. Jones</footer>
+
+  <!--- Menu Toggle + Scroll Reveal + Cart Script --->
+  <script src="js/main.js"></script>
+
+  <!--- Carousel Script --->
+  <script>
+    const track  = document.getElementById("carouselTrack");
+    const slides = document.querySelectorAll(".carousel__slide");
+    const dots   = document.querySelectorAll(".carousel__dot");
+    let current  = 0;
+
+    function goTo(index) {
+      current = (index + slides.length) % slides.length;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle("active", i === current));
+    }
+
+    document.getElementById("carouselNext").addEventListener("click", () => goTo(current + 1));
+    document.getElementById("carouselPrev").addEventListener("click", () => goTo(current - 1));
+    dots.forEach(dot => dot.addEventListener("click", () => goTo(+dot.dataset.index)));
+
+    /* Auto advance every 5 seconds */
+    setInterval(() => goTo(current + 1), 5000);
+  </script>
+
+</body>
+</html>

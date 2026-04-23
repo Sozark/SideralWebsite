@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Booking – Sidéral </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel+Decorative:wght@400;700&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/d0041be44b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="hamburger" id="hamburger" aria-label="Open menu" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="logo">Sidéral</div>
+      <div class="cart-icon">
+        <i class="fa-solid fa-shopping-bag"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- OVERLAY -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- MOBILE MENU -->
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Site navigation">
+    <div class="menu-header">
+      <div class="menu-logo">Sidéral</div>
+      <div class="menu-tagline">Luxury Beauty · Cosmic Glow</div>
+    </div>
+
+    <!-- Hamburger Menu Options -->
+    <div class="menu-nav">
+      <a href="About.html"><span class="link-num">01</span> About</a>
+      <a href="Products.html"><span class="link-num">02</span> Products</a>
+      <a href="Contact.html"><span class="link-num">03</span> Contact</a>
+      <a href="index.html"><span class="link-num">04</span> Home</a>
+    </div>
+
+    <div class="menu-footer">
+      <div class="menu-socials">
+        <a href="#">IG</a>
+        <a href="#">TK</a>
+        <a href="#">PT</a>
+      </div>
+    </div>
+  </nav>
+
+  <!--- ═══════════════════════════════════════════════════
+  CART PANEL — paste this block into every HTML page
+  Place it right after the closing </nav> tag and
+  before <main>
+═══════════════════════════════════════════════════ --->
+
+<!--- Cart Overlay — darkens the page behind the cart --->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<!--- Cart Side Panel --->
+<div class="cart-panel" id="cartPanel">
+
+  <!--- Cart Header --->
+  <div class="cart-panel__header">
+    <h2 class="cart-panel__title">Your Bag</h2>
+    <button class="cart-panel__close" onclick="closeCart()" aria-label="Close cart">✕</button>
+  </div>
+
+  <!--- Cart Items — filled dynamically by JavaScript --->
+  <div class="cart-panel__items" id="cartItems">
+    <p class="cart-empty">Your bag is empty.</p>
+  </div>
+
+  <!--- Cart Footer — Total and Checkout --->
+  <div class="cart-panel__footer">
+    
+    <div class="cart-panel__total-row">
+      <span class="cart-panel__total-label">Total</span>
+      <span class="cart-panel__total-value" id="cartTotal">$0</span>
+    </div>
+
+    <button class="cart-panel__checkout">Checkout</button>
+  </div>
+
+</div>
+
+<!--- Toast Notification — appears briefly when item is added --->
+<div class="added-toast" id="addedToast"></div>
+
+  <!-- PAGE CONTENT -->
+  <main>
+
+    <!-- Page hero -->
+    <section class="page-hero">
+      <p class="page-hero__eyebrow">Reserve Your Experience</p>
+      <h1 class="page-hero__title">Book a Session</h1>
+      <p class="page-hero__sub">Luxury beauty, tailored to you. Select a service and secure your appointment below.</p>
+    </section>
+
+    <!-- Booking layout: services + form side by side on desktop, stacked on mobile -->
+    <section class="booking-layout">
+
+      <!-- LEFT: service cards -->
+      <div class="booking-services">
+        <p class="booking-services__label">Choose a Service</p>
+
+        <label class="service-card">
+          <input type="radio" name="service" value="glow-facial" checked>
+          <div class="service-card__inner">
+            <div class="service-card__top">
+              <span class="service-card__name">Cosmic Glow Facial</span>
+              <span class="service-card__price">$95</span>
+            </div>
+            <p class="service-card__desc">Deep cleanse, exfoliation, and a luminosity mask leaving your skin radiant.</p>
+            <span class="service-card__duration">60 min</span>
+          </div>
+        </label>
+
+        <label class="service-card">
+          <input type="radio" name="service" value="lash-set">
+          <div class="service-card__inner">
+
+            <div class="service-card__top">
+              <span class="service-card__name">Full Lash Set</span>
+              <span class="service-card__price">$130</span>
+            </div>
+
+            <p class="service-card__desc">Classic or volume lashes, custom curl and length mapping per eye shape.</p>
+            <span class="service-card__duration">90 min</span>
+          </div>
+        </label>
+
+        <label class="service-card">
+          <input type="radio" name="service" value="brow-sculpt">
+          
+          <div class="service-card__inner">
+            
+            <div class="service-card__top">
+              <span class="service-card__name">Brow Sculpture</span>
+              <span class="service-card__price">$55</span>
+            </div>
+            <p class="service-card__desc">Precision threading, tinting, and lamination for a defined arch.</p>
+            <span class="service-card__duration">45 min</span>
+          
+          </div>
+        </label>
+
+        <label class="service-card">
+          <input type="radio" name="service" value="full-glam">
+          
+          <div class="service-card__inner">
+
+            <div class="service-card__top">
+              <span class="service-card__name">Full Glam</span>
+              <span class="service-card__price">$175</span>
+            </div>
+
+            <p class="service-card__desc">Complete makeup application — flawless finish for any occasion.</p>
+            <span class="service-card__duration">2 hr</span>
+          </div>
+        </label>
+
+      </div><!-- /booking-services -->
+
+      <!-- RIGHT: booking form -->
+      <div class="booking-form-wrap">
+        <p class="booking-services__label">Your Details</p>
+
+        <form id="bookingForm" class="booking-form" action="https://formspree.io/f/mzdyygaw" method="POST">
+
+          <div class="form-row">
+
+            <div class="form-group">
+              <label for="b-name">Full Name</label>
+              <input type="text" id="b-name" name="name" placeholder="Your name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="b-email">Email</label>
+              <input type="email" id="b-email" name="email" placeholder="your@email.com" required>
+            </div>
+
+          </div>
+
+          <div class="form-row">
+
+            <div class="form-group">
+              <label for="b-phone">Phone</label>
+              <input type="tel" id="b-phone" name="phone" placeholder="(000) 000-0000">
+            </div>
+            
+            <div class="form-group">
+              <label for="b-date">Preferred Date</label>
+              <input type="date" id="b-date" name="date" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="b-time">Preferred Time</label>
+            <select id="b-time" name="time" required>
+              <option value="" disabled selected>Select a time</option>
+              <option value="9am">9:00 AM</option>
+              <option value="10am">10:00 AM</option>
+              <option value="11am">11:00 AM</option>
+              <option value="12pm">12:00 PM</option>
+              <option value="1pm">1:00 PM</option>
+              <option value="2pm">2:00 PM</option>
+              <option value="3pm">3:00 PM</option>
+              <option value="4pm">4:00 PM</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="b-notes">Special Requests</label>
+            <textarea id="b-notes" name="notes" rows="4" placeholder="Allergies, preferences, or anything we should know..."></textarea>
+          </div>
+
+          <button type="submit" class="booking-submit">
+            Confirm Booking
+          </button>
+
+        </form>
+      </div><!-- /booking-form-wrap -->
+    
+
+    </section><!-- /booking-layout -->
+  </main>
+
+  <footer class="site-footer">Created by Noah C. Jones</footer>
+
+  <script src="js/main.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,2034 @@
+/* =====================================================
+   Sidèral — main.css
+   Speakeasy Luxury Aesthetic
+   Warm charcoal · Cognac amber · Candlelight glow
+===================================================== */
+
+/* ----------- Color Palette ---------- */
+:root {
+    --berry:      #d4649a;
+    --berry-dim:  #8A3560;
+    --berry-glow: rgba(212, 100, 154, 0.18);
+    --cream:      #f5e0ef;
+    --cream-dim:  rgba(245, 224, 239, 0.55);
+    --rose:       #e890be;
+    --charcoal-1: #0c0008;
+    --charcoal-2: #110009;
+    --charcoal-3: #1a000f;
+    --charcoal-4: #22001a;
+    --panel-w:    300px;
+
+    /* Keep these aliases so all your existing rules still work */
+    --pink: #d4649a;
+    --gold: #d4649a;
+    --amber:      #d4649a;
+    --amber-dim:  #8A3560;
+    --amber-glow: rgba(212, 100, 154, 0.18);
+}
+
+/* ----------- Base Body ---------- */
+/* Warm deep charcoal with a faint noise-like grain */
+body {
+    background: var(--charcoal-1);
+    background-image:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(212,100,154,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 110%, rgba(232,144,190,0.05) 0%, transparent 60%);
+    color: var(--cream);
+}
+
+/* ----------- Main Content Offset ---------- */
+main {
+    position: relative;
+    z-index: 1;
+    padding-top: 70px;
+}
+
+/* =====================================================
+   SITE HEADER
+===================================================== */
+
+/* ----------- Header Container ---------- */
+.site-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 6, 10, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(71, 20, 62, 0.2);
+    color: var(--cream);
+    z-index: 998;
+    /* Warm glow bleeding down from header */
+    box-shadow: 0 1px 40px rgba(200, 137, 58, 0.06);
+}
+
+/* ----------- Navigation Container ---------- */
+.nav-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    height: 70px;
+}
+
+/* ----------- Logo ---------- */
+/* Art deco wide-spaced serif feel */
+.logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-align: center;
+    flex: 1;
+    background: linear-gradient(135deg, var(--cream) 20%, var(--amber) 60%, #E8C07A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    user-select: none;
+    filter: drop-shadow(0 0 12px rgba(200, 137, 58, 0.25));
+}
+
+/* ----------- Cart Icon ---------- */
+.cart-icon {
+    position: absolute;
+    right: 30px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    opacity: 0.7;
+    color: var(--cream);
+    transition: opacity 0.25s, color 0.25s;
+}
+
+.cart-icon:hover {
+    opacity: 1;
+    color: var(--amber);
+}
+
+/* ----------- Cart Badge ---------- */
+#cartBadge {
+    display: none;
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    width: 17px;
+    height: 17px;
+    background: var(--amber);
+    border-radius: 50%;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 400;
+    color: var(--charcoal-1);
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* =====================================================
+   HAMBURGER MENU ICON
+===================================================== */
+
+/* ----------- Hamburger Wrapper ---------- */
+.hamburger {
+    position: absolute;
+    left: 30px;
+    width: 26px;
+    height: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+/* ----------- Hamburger Bars ---------- */
+.hamburger span {
+    display: block;
+    height: 1.5px;
+    width: 100%;
+    background: var(--cream-dim);
+    border-radius: 1px;
+    transform-origin: left center;
+    transition:
+        transform  0.4s cubic-bezier(0.75, 0, 0.175, 1),
+        opacity    0.3s ease,
+        background 0.3s ease;
+}
+
+/* ----------- Hamburger Animates to X when Active ---------- */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(42deg) translateY(-1px);
+    background: var(--amber);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-8px);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-42deg) translateY(1px);
+    background: var(--amber);
+}
+
+/* =====================================================
+   DARK OVERLAY
+===================================================== */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 4, 3, 0.78);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    z-index: 998;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* =====================================================
+   MOBILE SIDE MENU — Speakeasy velvet panel
+===================================================== */
+
+/* ----------- Menu Panel ---------- */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    width: var(--panel-w);
+    height: 100vh;
+    /* Deep warm black with subtle vignette */
+     background:
+        radial-gradient(ellipse 120% 60% at -10% 30%, rgba(212,100,154,0.09) 0%, transparent 60%),
+        linear-gradient(170deg, #1e0012 0%, #110008 55%, #0c0008 100%);
+    border-right: 1px solid rgba(200, 58, 181, 0.18);
+    color: var(--cream);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 1001;
+    box-shadow: 6px 0 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ----------- Menu Slides In when Active ---------- */
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+/* ----------- Candlelight Glow Top Left ---------- */
+.mobile-menu::before {
+    content: '';
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    top: -60px;
+    left: -60px;
+    border-radius: 50%;
+    background: rgba(200, 137, 58, 0.07);
+    filter: blur(60px);
+    pointer-events: none;
+}
+
+/* ----------- Warm Glow Bottom Right ---------- */
+.mobile-menu::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    bottom: 40px;
+    right: -80px;
+    border-radius: 50%;
+    background: rgba(184, 113, 79, 0.06);
+    filter: blur(50px);
+    pointer-events: none;
+}
+
+/* ----------- Menu Branding Header ---------- */
+.menu-header {
+    position: relative;
+    padding: 40px 32px 28px;
+    border-bottom: 1px solid rgba(200, 58, 181, 0.18);
+}
+
+/* ----------- Amber Accent Line Under Menu Header ---------- */
+.menu-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 32px;
+    width: 36px;
+    height: 1px;
+    opacity: 0.6;
+}
+
+/* ----------- Menu Logo Text ---------- */
+.menu-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    background: linear-gradient(135deg, var(--cream) 20%, var(--amber) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ----------- Menu Tagline ---------- */
+.menu-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: rgba(240, 207, 240, 0.4);
+    margin-top: 5px;
+    letter-spacing: 0.06em;
+}
+
+/* ----------- Menu Navigation Links Container ---------- */
+.menu-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0 24px;
+}
+
+/* ----------- Individual Navigation Links ---------- */
+.mobile-menu a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: rgba(240, 230, 208, 0.6);
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    padding: 10px 32px;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition:
+        opacity      0.4s ease,
+        transform    0.4s ease,
+        color        0.25s ease,
+        padding-left 0.25s ease;
+}
+
+/* ----------- Number Ornaments ---------- */
+.mobile-menu a .link-num {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 200;
+    letter-spacing: 0.14em;
+    color: var(--amber);
+    opacity: 0.5;
+    margin-top: 6px;
+    min-width: 18px;
+    transition: opacity 0.25s;
+}
+
+/* ----------- Amber Left Accent Bar on Hover ---------- */
+.mobile-menu a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    bottom: 16px;
+    width: 1.5px;
+    background: var(--amber);
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mobile-menu a:hover::before { transform: scaleY(1); }
+
+.mobile-menu a:hover {
+    color: var(--cream);
+    padding-left: 40px;
+}
+
+.mobile-menu a:hover .link-num { opacity: 1; }
+
+/* ----------- Links Stagger In when Menu Opens ---------- */
+.mobile-menu.active a              { opacity: 1; transform: translateX(0); }
+.mobile-menu.active a:nth-child(1) { transition-delay: 0.10s; }
+.mobile-menu.active a:nth-child(2) { transition-delay: 0.18s; }
+.mobile-menu.active a:nth-child(3) { transition-delay: 0.26s; }
+.mobile-menu.active a:nth-child(4) { transition-delay: 0.34s; }
+
+/* ----------- Links Hide Instantly when Menu Closes ---------- */
+.mobile-menu:not(.active) a { transition-delay: 0s !important; }
+
+/* ----------- Social Icons Footer ---------- */
+.menu-footer {
+    padding: 24px 32px 36px;
+    border-top: 1px solid rgba(200, 137, 58, 0.08);
+}
+
+.menu-socials {
+    display: flex;
+    gap: 12px;
+}
+
+.menu-socials a {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(200, 58, 198, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(240, 208, 239, 0.4);
+    font-size: 0.68rem;
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    letter-spacing: 0.03em;
+    transition: border-color 0.25s, color 0.25s, background 0.25s, box-shadow 0.25s;
+    opacity: 1 !important;
+    transform: none !important;
+    padding: 0;
+}
+
+.menu-socials a:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(200, 58, 179, 0.08);
+    box-shadow: 0 0 12px rgba(200, 137, 58, 0.15);
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+/* ----------- Primary Button — Warm Amber ---------- */
+.btn-primary {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--amber);
+    border-radius: 1px;
+    color: var(--amber);
+    padding: 13px 38px;
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+.btn-primary:hover {
+    background: rgba(200, 137, 58, 0.1);
+    box-shadow: 0 0 28px rgba(200, 137, 58, 0.25),
+                inset 0 0 16px rgba(200, 137, 58, 0.06);
+    color: var(--cream);
+}
+
+/* ----------- Ghost Button ---------- */
+.btn-ghost {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid rgba(240, 230, 208, 0.2);
+    border-radius: 1px;
+    color: rgba(240, 207, 239, 0.45);
+    padding: 13px 38px;
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    transition: border-color 0.3s, background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.btn-ghost:hover {
+    border-color: var(--amber);
+    background: rgba(200, 137, 58, 0.06);
+    color: var(--cream);
+    box-shadow: 0 0 20px rgba(200, 137, 58, 0.12);
+}
+
+/* =====================================================
+   SITE FOOTER
+===================================================== */
+
+.site-footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 28px 20px;
+    color: var(--amber);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 200;
+    letter-spacing: 0.18em;
+    border-top: 1px solid rgba(200, 58, 188, 0.08);
+}
+
+/* =====================================================
+   INNER PAGE HERO
+===================================================== */
+
+.page-hero {
+    text-align: center;
+    padding: 70px 20px 40px;
+    font-family: 'Cormont Garamond'; 
+}
+
+/* ----------- Eyebrow Label ---------- */
+.page-hero__eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 200;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 16px;
+    opacity: 0.8;
+}
+
+/* ----------- Page Title ---------- */
+.page-hero__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--cream);
+    margin-bottom: 16px;
+    line-height: 1.1;
+}
+
+/* ----------- Page Subtitle ---------- */
+.page-hero__sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 200;
+    letter-spacing: 0.08em;
+    color: rgba(240, 207, 240, 0.4);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.75;
+}
+
+/* =====================================================
+   HOMEPAGE — Scroll Reveal
+===================================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =====================================================
+   HOMEPAGE — Video Hero
+===================================================== */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* ----------- Looping Background Video ---------- */
+.hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+/* ----------- Warm Candlelight Dim Over Video ---------- */
+/* Darker at edges, lighter in center like a spotlight */
+.hero__dim {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 70% 60% at 50% 45%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.78) 100%),
+        linear-gradient(to bottom, rgba(10,8,6,0.4) 0%, rgba(10,8,6,0.2) 40%, rgba(10,8,6,0.75) 100%);
+    z-index: 1;
+}
+
+/* ----------- Hero Text Block ---------- */
+.hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+    max-width: 760px;
+}
+
+/* ----------- Hero Eyebrow ---------- */
+.hero__eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 200;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.3s forwards;
+}
+
+/* ----------- Hero Main Title ---------- */
+.hero__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.8rem, 10vw, 8rem);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--cream);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.55s forwards;
+    /* Warm candlelight text glow */
+    text-shadow: 0 0 60px rgba(200, 137, 58, 0.12);
+}
+
+.hero__title em {
+    font-style: italic;
+    color: var(--amber);
+}
+
+/* ----------- Hero Subheading ---------- */
+.hero__sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 200;
+    letter-spacing: 0.14em;
+    color: rgba(240, 208, 236, 0.55);
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.75s forwards;
+}
+
+/* ----------- Hero Call to Action Buttons ---------- */
+.hero__ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.95s forwards;
+}
+
+/* ----------- Scroll Indicator ---------- */
+.hero__scroll {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    /* animation: fadeUp 1s ease 1.3s forwards; */
+}
+
+.hero__scroll span {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 200;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(200, 137, 58, 0.4);
+}
+
+/* ----------- Animated Candlelight Line ---------- */
+.hero__scroll-line {
+    width: 1px;
+    height: 44px;
+    background: linear-gradient(to bottom, rgba(200, 58, 190, 0.7), transparent);
+    animation: scrollPulse 2.5s ease-in-out infinite;
+}
+
+/* ----------- Keyframes ---------- */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1);    }
+    50%       { opacity: 0.9; transform: scaleY(1.12); }
+}
+
+/* =====================================================
+   HOMEPAGE — Marquee Ticker
+===================================================== */
+
+.marquee {
+    overflow: hidden;
+    border-top: 1px solid rgba(200, 58, 198, 0.12);
+    border-bottom: 1px solid rgba(200, 58, 198, 0.12);
+    padding: 15px 0;
+    background: rgba(15, 11, 8, 0.85);
+}
+
+.marquee__track {
+    display: flex;
+    white-space: nowrap;
+    animation: marqueeScroll 30s linear infinite;
+}
+
+.marquee__track span {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 200;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: rgba(240, 207, 239, 0.45);
+    padding: 0 24px;
+}
+
+/* ----------- Amber Diamond Separators ---------- */
+.marquee__sep {
+    color: var(--amber) !important;
+    opacity: 0.5;
+    padding: 0 6px !important;
+}
+
+@keyframes marqueeScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* =====================================================
+   HOMEPAGE — Intro Statement
+===================================================== */
+
+.intro {
+    padding: 110px 40px;
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+    /* Subtle horizontal amber rule above */
+    border-top: 1px solid rgba(200, 137, 58, 0.1);
+}
+
+.intro__label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 200;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 22px;
+    opacity: 0.8;
+}
+
+.intro__heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.12;
+    letter-spacing: 0.04em;
+    margin-bottom: 28px;
+}
+
+.intro__heading em {
+    font-style: italic;
+    color: var(--amber);
+}
+
+.intro__text {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 200;
+    color: rgba(240, 207, 239, 0.45);
+    line-height: 1.9;
+    max-width: 540px;
+    margin: 0 auto 40px;
+    letter-spacing: 0.03em;
+}
+
+/* =====================================================
+   HOMEPAGE — Featured Products
+===================================================== */
+
+.featured {
+    padding: 0 40px 110px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 44px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(200, 137, 58, 0.1);
+}
+
+.featured__label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 200;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
+    width: 100%;
+    opacity: 0.8;
+}
+
+.featured__heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+}
+
+.featured__all {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 200;
+    letter-spacing: 0.16em;
+    color: rgba(240, 230, 208, 0.3);
+    text-decoration: none;
+    transition: color 0.25s;
+}
+
+.featured__all:hover { color: var(--amber); }
+
+.featured__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 700px) {
+    .featured__grid { grid-template-columns: 1fr; }
+    .featured { padding: 0 20px 60px; }
+}
+
+/* ----------- Featured Product Card ---------- */
+.feat-card {
+    text-decoration: none;
+    display: block;
+    border: 1px solid rgba(200, 58, 188, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    color: var(--berry-dim);
+    transition: border-color 0.3s, transform 0.4s ease, box-shadow 0.4s;
+}
+
+.feat-card:hover {
+    border-color: rgba(200, 58, 183, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 24px rgba(200, 137, 58, 0.06);
+}
+
+.feat-card__img {
+    aspect-ratio: 3 / 4;
+    width: 100%;
+    transition: transform 0.6s ease;
+}
+
+.feat-card:hover .feat-card__img { transform: scale(1.05); }
+
+/* ----------- Warm Gradient Placeholders ---------- */
+.feat-card__img--1 { background: url(/images/MockupSerum.jpg) center / cover no-repeat; }
+.feat-card__img--2 { background: url(/images/EyePallette.jpg) center / cover no-repeat; }
+.feat-card__img--3 { background: url(/images/BodyOil.jpg) center / cover no-repeat; }
+
+.feat-card__body {
+    padding: 18px 20px 22px;
+    background: rgba(15, 11, 8, 0.7);
+}
+
+.feat-card__cat {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 200;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--amber);
+    opacity: 0.65;
+    margin-bottom: 6px;
+}
+
+.feat-card__name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+}
+
+.feat-card__price {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 200;
+    color: rgba(240, 230, 208, 0.4);
+}
+
+/* =====================================================
+   HOMEPAGE — Editorial Banner
+===================================================== */
+
+.banner {
+    position: relative;
+    height: 72vh;
+    min-height: 440px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 110px;
+}
+
+.banner__video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+/* ----------- Banner Background Image ---------- */
+.banner__img {
+    position: absolute;
+    inset: 0;
+    background: url(../images/BlackWoman.jpeg) center / cover no-repeat;
+    transform: scale(1.04);
+    transition: transform 10s ease;
+}
+
+.banner:hover .banner__img { transform: scale(1.0); }
+
+/* ----------- Warm Vignette Over Banner ---------- */
+.banner__dim {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 1;
+}
+
+.banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 70% at 50% 50%, rgba(0,0,0,0.3) 0%, rgba(10,8,6,0.7) 100%);
+    z-index: 1;
+}
+
+.banner__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+}
+
+.banner__label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 200;
+    letter-spacing: 0.36em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 18px;
+    opacity: 0.85;
+}
+
+.banner__heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.0;
+    letter-spacing: 0.04em;
+    margin-bottom: 36px;
+    text-shadow: 0 0 80px rgba(200, 58, 193, 0.15);
+}
+
+.banner__heading em {
+    font-style: italic;
+    color: var(--amber);
+}
+
+/* =====================================================
+   HOMEPAGE — Values Row
+===================================================== */
+
+.values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid rgba(200, 58, 183, 0.1);
+    max-width: 1100px;
+    margin: 0 auto 110px;
+    background: rgba(23, 14, 22, 0.4);
+}
+
+@media (max-width: 700px) {
+    .values { grid-template-columns: 1fr; }
+}
+
+.values__item {
+    padding: 56px 44px;
+    text-align: center;
+    border-right: 1px solid rgba(240, 207, 239, 0.45);
+    transition: background 0.4s;
+}
+
+.values__item:last-child { border-right: none; }
+
+.values__item:hover {
+    background: rgba(200, 137, 58, 0.03);
+}
+
+.values__icon {
+    display: block;
+    font-size: 1.3rem;
+    color: var(--amber);
+    opacity: 0.6;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 8px rgba(200, 137, 58, 0.3));
+}
+
+.values__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+    margin-bottom: 14px;
+}
+
+.values__text {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 200;
+    color: rgba(240, 207, 239, 0.45);
+    line-height: 1.8;
+    letter-spacing: 0.03em;
+}
+
+/* =====================================================
+   HOMEPAGE — Instagram Gallery Strip
+===================================================== */
+
+.gallery {
+    text-align: center;
+    padding: 0 40px 110px;
+}
+
+@media (max-width: 600px) {
+    .gallery { padding: 0 16px 60px; }
+}
+
+.gallery__label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 200;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.gallery__heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 0.06em;
+    margin-bottom: 36px;
+}
+
+.gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 4px;
+}
+
+@media (max-width: 700px) {
+    .gallery__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.gallery__cell {
+    aspect-ratio: 1;
+    overflow: hidden;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.gallery__cell:hover {
+    opacity: 0.75;
+    transform: scale(0.98);
+}
+
+/* ----------- Warm Placeholder Gradients ---------- */
+.gallery__cell--1 { background: url(/images/Kwesi.jpg) center / cover no-repeat; }
+.gallery__cell--2 { background: url(/images/Gideon-Hezekiah.jpg) center / cover no-repeat; }
+.gallery__cell--3 { background: url(/images/KhaliifaHussein.jpg) center / cover no-repeat; }
+.gallery__cell--4 { background: url(/images/JessicaFelicio.jpg) center / cover no-repeat; }
+.gallery__cell--5 { background: url(/images/OyeShotThis.jpg) center / cover no-repeat; }
+.gallery__cell--6 { background: url(/images/ModelForGoodFaces.jpg) center / cover no-repeat; }
+
+/* =====================================================
+   CONTACT PAGE
+===================================================== */
+
+.form-container {
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#contactForm label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 200;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    opacity: 0.8;
+}
+
+#contactForm input,
+#contactForm textarea {
+    width: 100%;
+    background: rgba(20, 10, 19, 0.7);
+    border: var(--amber);
+    border-radius: 1px;
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 200;
+    padding: 13px 16px;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    letter-spacing: 0.04em;
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+    border-color: var(--amber);
+    box-shadow: 0 0 16px rgba(200, 58, 186, 0.08);
+}
+
+#contactForm input::placeholder,
+#contactForm textarea::placeholder {
+    color: rgba(240, 230, 208, 0.436);
+}
+
+#contactForm textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+#contactForm button {
+    align-self: flex-start;
+    background: transparent;
+    border: 1px solid var(--amber);
+    border-radius: 1px;
+    color: var(--amber);
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 200;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    padding: 14px 42px;
+    margin-top: 8px;
+    transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+#contactForm button:hover {
+    background: rgba(200, 58, 183, 0.08);
+    box-shadow: 0 0 24px rgba(200, 58, 183, 0.18);
+    color: var(--cream);
+}
+
+/* =====================================================
+   BOOKING PAGE
+===================================================== */
+
+.booking-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 52px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+}
+
+@media (max-width: 860px) {
+    .booking-layout {
+        grid-template-columns: 1fr;
+        padding: 0 20px 60px;
+    }
+}
+
+.booking-services__label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 200;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 22px;
+    opacity: 0.8;
+}
+
+.booking-services {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.service-card {
+    cursor: pointer;
+    display: block;
+}
+
+.service-card input[type="radio"] {
+    display: none;
+}
+
+.service-card__inner {
+    border: 1px solid rgba(0, 58, 199, 0.12);
+    border-radius: 1px;
+    padding: 20px 22px;
+    transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+    background: rgba(21, 15, 10, 0.5);
+}
+
+.service-card:hover .service-card__inner {
+    border-color: rgba(200, 58, 181, 0.3);
+    background: rgba(200, 137, 58, 0.04);
+}
+
+.service-card input:checked + .service-card__inner {
+    border-color: var(--amber);
+    background: rgba(200, 137, 58, 0.06);
+    box-shadow: 0 0 20px rgba(200, 137, 58, 0.08);
+}
+
+.service-card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.service-card__name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+}
+
+.service-card__price {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 200;
+    color: var(--amber);
+    letter-spacing: 0.06em;
+}
+
+.service-card__desc {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 200;
+    color: var(--cream);
+    line-height: 1.65;
+    margin-bottom: 10px;
+}
+
+.service-card__duration {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 200;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+}
+
+.booking-form-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-row {
+    display: grid;
+    /* grid-template-columns: 1fr 1fr; */
+    gap: 14px;
+}
+
+@media (max-width: 500px) {
+    .form-row { grid-template-columns: 1fr; }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.booking-form label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 200;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+    opacity: 0.8;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(200, 58, 195, 0.15);
+    border-radius: 1px;
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 200;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    appearance: none;
+    -webkit-appearance: none;
+    letter-spacing: 0.04em;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    border-color: var(--amber);
+    box-shadow: 0 0 14px rgba(200, 137, 58, 0.08);
+}
+
+.booking-form input::placeholder,
+.booking-form textarea::placeholder {
+    color: rgba(240, 230, 208, 0.436);
+}
+
+.booking-form input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.6) sepia(0.5) saturate(2) hue-rotate(10deg) opacity(0.5);
+    cursor: pointer;
+}
+
+.booking-form select option {
+    background: var(--charcoal-3);
+    color: var(--cream);
+}
+
+.booking-form textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.booking-submit {
+    align-self: flex-start;
+    background: transparent;
+    border: 1px solid var(--amber);
+    border-radius: 1px;
+    color: var(--amber);
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 200;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    padding: 14px 44px;
+    margin-top: 8px;
+    transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+.booking-submit:hover {
+    background: rgba(200, 137, 58, 0.08);
+    box-shadow: 0 0 28px rgba(200, 137, 58, 0.18);
+    color: var(--cream);
+}
+
+/* =====================================================
+   PRODUCTS PAGE
+===================================================== */
+
+.products-filter {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 0 20px 52px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid rgba(200, 58, 186, 0.15);
+    border-radius: 1px;
+    color: rgba(240, 230, 208, 0.35);
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 200;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 9px 22px;
+    transition: border-color 0.25s, color 0.25s, background 0.25s, box-shadow 0.25s;
+}
+
+.filter-btn:hover {
+    border-color: rgba(200, 58, 186, 0.4);
+    color: rgba(240, 230, 208, 0.75);
+}
+
+.filter-btn.active {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(0, 58, 191, 0.06);
+    box-shadow: 0 0 16px rgba(200, 137, 58, 0.1);
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+    position: relative;
+}
+
+@media (max-width: 600px) {
+    .products-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        padding: 0 16px 60px;
+    }
+}
+
+@media (max-width: 400px) {
+    .products-grid { grid-template-columns: 1fr; }
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(200, 58, 160, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    background: rgba(15, 8, 13, 0.6);
+    transition:
+        opacity      0.35s ease,
+        transform    0.35s ease,
+        border-color 0.3s ease,
+        box-shadow   0.3s ease;
+}
+
+.product-card:hover {
+    border-color: rgba(200, 58, 174, 0.28);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35), 0 0 20px rgba(200,137,58,0.05);
+}
+
+.product-card--hidden {
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+.product-card__image-wrap {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.product-card__image {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.55s ease;
+}
+
+.product-card:hover .product-card__image { transform: scale(1.05); }
+
+
+.product-card__image--1 { background: url(/images/MockupSerum.jpg) center / cover no-repeat; }
+.product-card__image--2 { background: url(/images/LipElixer.jpg) center / cover no-repeat; }
+.product-card__image--3 { background: url(/images/EyePallette.jpg) center / cover no-repeat; }
+.product-card__image--4 { background: url(/images/MistSpray.jpg) center / cover no-repeat; }
+.product-card__image--5 { background: url(/images/BodyOil.jpg) center / cover no-repeat; }
+.product-card__image--6 { background: url(/images/LashPhoto.jpg) center / cover no-repeat; }
+.product-card__image--7 { background: url(/images/LipGloss.jpg) center / cover no-repeat; }
+.product-card__image--8 { background: url(/images/SugarScrub.jpg) center / cover no-repeat; }
+
+.product-card__wishlist {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: rgba(10, 8, 6, 0.6);
+    border: 1px solid rgba(200, 137, 58, 0.15);
+    border-radius: 50%;
+    color: rgba(240, 230, 208, 0.4);
+    font-size: 0.75rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.25s, border-color 0.25s, background 0.25s, box-shadow 0.25s;
+}
+
+.product-card__wishlist:hover,
+.product-card__wishlist--active {
+    color: var(--rose);
+    border-color: var(--rose);
+    background: rgba(184, 113, 79, 0.12);
+    box-shadow: 0 0 12px rgba(184, 113, 79, 0.2);
+}
+
+.product-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 18px 20px 20px;
+    gap: 6px;
+}
+
+.product-card__category {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 200;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--amber);
+    opacity: 0.6;
+}
+
+.product-card__name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+}
+
+.product-card__desc {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.76rem;
+    font-weight: 200;
+    color: rgba(240, 207, 240, 0.4);
+    line-height: 1.65;
+    flex: 1;
+    margin-top: 4px;
+    letter-spacing: 0.02em;
+}
+
+.product-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(200, 137, 58, 0.08);
+}
+
+.product-card__price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+}
+
+.product-card__add {
+    background: transparent;
+    border: 1px solid rgba(200, 58, 181, 0.3);
+    border-radius: 1px;
+    color: var(--cream);
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 200;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    transition: background 0.25s, border-color 0.25s, color 0.25s, box-shadow 0.25s;
+}
+
+.product-card__add:hover {
+    background: rgba(200, 58, 181, 0.08);
+    border-color: var(--amber);
+    color: var(--amber);
+    box-shadow: 0 0 14px rgba(200, 58, 181, 0.14);
+}
+
+/* =====================================================
+   CART PANEL — Speakeasy slide-out
+===================================================== */
+
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 3, 2, 0.75);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    z-index: 1098;
+}
+
+.cart-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    width: 360px;
+    max-width: 100vw;
+    height: 100vh;
+    background:
+        radial-gradient(ellipse 120% 50% at 110% 20%, rgba(200, 58, 181, 0.3) 0%, transparent 60%),
+        linear-gradient(170deg, #170915 0%, #0d060d 55%, #0a060a 100%);
+    border-left: 1px solid rgba(200, 58, 181, 0.3);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.48s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 1099;
+    box-shadow: -6px 0 40px rgba(0, 0, 0, 0.6);
+}
+
+.cart-panel.active {
+    transform: translateX(0);
+}
+
+.cart-panel__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 28px 24px;
+    border-bottom: 1px solid rgba(200, 58, 181, 0.3);
+}
+
+.cart-panel__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 0.08em;
+}
+
+.cart-panel__close {
+    background: transparent;
+    border: none;
+    color: rgba(240, 230, 208, 0.3);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 4px;
+}
+
+.cart-panel__close:hover { color: var(--amber); }
+
+.cart-panel__items {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Custom scrollbar to match aesthetic */
+.cart-panel__items::-webkit-scrollbar { width: 2px; }
+.cart-panel__items::-webkit-scrollbar-track { background: transparent; }
+.cart-panel__items::-webkit-scrollbar-thumb { background: rgba(200,137,58,0.2); }
+
+.cart-empty {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 200;
+    color: rgba(240, 230, 208, 0.22);
+    text-align: center;
+    margin-top: 70px;
+    letter-spacing: 0.08em;
+    font-style: italic;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(200, 58, 181, 0.3);
+}
+
+.cart-item__info { flex: 1; }
+
+.cart-item__name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 4px;
+    letter-spacing: 0.03em;
+}
+
+.cart-item__price {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 200;
+    color: var(--amber);
+    letter-spacing: 0.06em;
+}
+
+.cart-item__remove {
+    background: transparent;
+    border: none;
+    color: rgba(240, 230, 208, 0.2);
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 4px;
+    flex-shrink: 0;
+}
+
+.cart-item__remove:hover { color: var(--rose); }
+
+.cart-panel__footer {
+    padding: 20px 28px 32px;
+    border-top: 1px solid rgba(200, 137, 58, 0.1);
+}
+
+.cart-panel__total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+}
+
+.cart-panel__total-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    font-weight: 200;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--cream);
+}
+
+.cart-panel__total-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+}
+
+.cart-panel__checkout {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--amber);
+    border-radius: 1px;
+    color: var(--amber);
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 200;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    padding: 15px;
+    transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+.cart-panel__checkout:hover {
+    background: rgba(200, 137, 58, 0.08);
+    box-shadow: 0 0 28px rgba(200, 137, 58, 0.18);
+    color: var(--cream);
+}
+
+/* ----------- Added to Bag Toast ---------- */
+.added-toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(16px);
+    background: rgba(21, 15, 10, 0.96);
+    border: 1px solid rgba(200, 58, 190, 0.25);
+    border-radius: 1px;
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 200;
+    letter-spacing: 0.14em;
+    padding: 12px 28px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    z-index: 2000;
+    white-space: nowrap;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+}
+
+.added-toast.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* =====================================================
+   ABOUT PAGE — Carousel and Story
+===================================================== */
+
+.carousel-section {
+    padding: 0 40px 60px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.carousel { position: relative; }
+
+.carousel__track-wrap {
+    overflow: hidden;
+    border-radius: 1px;
+    border: 1px solid rgba(200, 58, 181, 0.12);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,137,58,0.04);
+}
+
+.carousel__track {
+    display: flex;
+    transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.carousel__slide { min-width: 100%; }
+
+.carousel__img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+}
+
+/* ----------- Warm Placeholder Gradients ---------- */
+.carousel__img--1 {background: url(/images/Gideon-Hezekiah.jpg) center / cover no-repeat; }
+.carousel__img--2 { background: url(/images/OyeShotThis.jpg) center / cover no-repeat; }
+.carousel__img--3 { background: url(/images/JessicaFelicio.jpg) center / cover no-repeat; }
+
+.carousel__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(10, 8, 6, 0.7);
+    border: 1px solid rgba(200, 137, 58, 0.18);
+    border-radius: 50%;
+    color: rgba(240, 230, 208, 0.55);
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 0.78rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.25s, color 0.25s, background 0.25s, box-shadow 0.25s;
+    z-index: 2;
+}
+
+.carousel__btn:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(200, 137, 58, 0.08);
+    box-shadow: 0 0 16px rgba(200, 137, 58, 0.15);
+}
+
+.carousel__btn--prev { left: -20px; }
+.carousel__btn--next { right: -20px; }
+
+@media (max-width: 600px) {
+    .carousel__btn--prev { left: 8px; }
+    .carousel__btn--next { right: 8px; }
+    .carousel-section { padding: 0 16px 48px; }
+}
+
+.carousel__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.carousel__dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(240, 230, 208, 0.15);
+    border: none;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s;
+    padding: 0;
+}
+
+.carousel__dot.active {
+    background: var(--amber);
+    transform: scale(1.4);
+    box-shadow: 0 0 6px rgba(200, 137, 58, 0.4);
+}
+
+.carousel__dot:hover { background: rgba(200, 137, 58, 0.4); }
+
+/* ----------- About Story Blocks ---------- */
+.about-body {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 20px 40px 80px;
+}
+
+@media (max-width: 600px) {
+    .about-body { padding: 20px 20px 60px; }
+}
+
+/* ----------- Amber Left Border Accent ---------- */
+.about-block {
+    border-left: 1px solid rgba(200, 137, 58, 0.22);
+    padding-left: 32px;
+}
+
+.about-block__label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 200;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 12px;
+    opacity: 0.75;
+}
+
+.about-block__heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+    line-height: 1.15;
+}
+
+.about-block__text {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.86rem;
+    font-weight: 200;
+    color: rgba(240, 230, 208, 0.42);
+    line-height: 1.85;
+    letter-spacing: 0.03em;
+}
+
+/* About Page — Side by Side Pairs */
+.about-pairs {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.about-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    border: 1px solid rgba(200, 137, 58, 0.1);
+    overflow: hidden;
+}
+
+/* Alternates image left/right on every other row */
+.about-pair:nth-child(even) .about-pair__img  { order: 2; }
+.about-pair:nth-child(even) .about-pair__text { order: 1; }
+
+.about-pair__img {
+    aspect-ratio: 3 / 4;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.about-pair__img--1 { background-image: url(/images/Gideon-Hezekiah.jpg); }
+.about-pair__img--2 { background-image: url(/images/OyeShotThis.jpg); }
+.about-pair__img--3 { background-image: url(/images/JessicaFelicio.jpg); }
+
+.about-pair__text {
+    padding: 52px 48px;
+    border-left: 1px solid rgba(200, 137, 58, 0.1);
+}
+
+.about-pair:nth-child(even) .about-pair__text {
+    border-left: none;
+    border-right: 1px solid rgba(200, 137, 58, 0.1);
+}
+
+@media (max-width: 768px) {
+    .about-pair {
+        grid-template-columns: 1fr;
+    }
+    .about-pair:nth-child(even) .about-pair__img,
+    .about-pair:nth-child(even) .about-pair__text {
+        order: unset;
+    }
+    .about-pair__text {
+        border-left: none;
+        border-top: 1px solid rgba(200, 137, 58, 0.1);
+        padding: 32px 24px;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE — Mobile Adjustments
+===================================================== */
+
+@media (max-width: 768px) {
+    .page-hero__title { font-size: 2.4rem; }
+    .page-hero__sub   { font-size: 0.82rem; }
+    .intro { padding: 60px 24px; }
+    .values__item { padding: 40px 28px; }
+}

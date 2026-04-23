@@ -1,0 +1,337 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sidéral</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel+Decorative:wght@400;700&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/d0041be44b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!--- Site Header --->
+<header class="site-header">
+
+  <!--- Navigation Container --->
+  <div class="nav-container">
+
+    <!--- Hamburger Menu Icon --->
+    <div class="hamburger" id="hamburger" aria-label="Open menu" role="button" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!--- Sidéral Logo --->
+    <div class="logo">Sidéral</div>
+
+    <!--- Cart Icon --->
+    <div class="cart-icon">
+      <i class="fa-solid fa-shopping-bag"></i>
+    </div>
+
+  </div>
+</header>
+
+<!--- Visual Overlay --->
+<div class="overlay" id="overlay"></div>
+
+<!--- Mobile Menu --->
+<nav class="mobile-menu" id="mobileMenu" aria-label="Site navigation">
+
+  <!--- Menu Branding --->
+  <div class="menu-header">
+    <div class="menu-logo">Sidéral</div>
+    <div class="menu-tagline">Luxury Beauty · Cosmic Glow</div>
+  </div>
+
+  <!--- Hamburger Menu Options --->
+  <div class="menu-nav">
+    <a href="About.html"><span class="link-num">01</span> About</a>
+    <a href="Products.html"><span class="link-num">02</span> Products</a>
+    <a href="Booking.html"><span class="link-num">03</span> Booking</a>
+    <a href="Contact.html"><span class="link-num">04</span> Contact</a>
+  </div>
+
+  <!--- Social Media Tags --->
+  <div class="menu-footer">
+    <div class="menu-socials">
+      <a href="#">IG</a>
+      <a href="#">TK</a>
+      <a href="#">PT</a>
+    </div>
+  </div>
+
+</nav>
+
+<!--- ═══════════════════════════════════════════════════
+  CART PANEL — paste this block into every HTML page
+  Place it right after the closing </nav> tag and
+  before <main>
+═══════════════════════════════════════════════════ --->
+
+<!--- Cart Overlay — darkens the page behind the cart --->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<!--- Cart Side Panel --->
+<div class="cart-panel" id="cartPanel">
+
+  <!--- Cart Header --->
+  <div class="cart-panel__header">
+    <h2 class="cart-panel__title">Your Bag</h2>
+    <button class="cart-panel__close" onclick="closeCart()" aria-label="Close cart">✕</button>
+  </div>
+
+  <!--- Cart Items — filled dynamically by JavaScript --->
+  <div class="cart-panel__items" id="cartItems">
+    <p class="cart-empty">Your bag is empty.</p>
+  </div>
+
+  <!--- Cart Footer — Total and Checkout --->
+  <div class="cart-panel__footer">
+    <div class="cart-panel__total-row">
+      <span class="cart-panel__total-label">Total</span>
+      <span class="cart-panel__total-value" id="cartTotal">$0</span>
+    </div>
+    <button class="cart-panel__checkout">Checkout</button>
+  </div>
+
+</div>
+
+<!--- Toast Notification — appears briefly when item is added --->
+<div class="added-toast" id="addedToast"></div>
+
+<!--- Main Content --->
+<main>
+
+  <!--- Hero Section — Full Screen Video Background --->
+  <section class="hero">
+
+    <!--- Background Video — replace src with your actual video file --->
+    <!--- poster shows your image as a fallback while the video loads --->
+    <video
+      class="hero__video"
+      src="videos/StockFreeModelVideo.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+    ></video>
+
+    <!--- Dark Gradient Over the Video so text stays readable --->
+    <div class="hero__dim"></div>
+
+    <!--- Hero Text Content --->
+    <div class="hero__content">
+
+      <!--- Small Label Above the Title --->
+      <p class="hero__eyebrow">Luxury Beauty · Cosmic Glow</p>
+
+      <!--- Main Hero Heading --->
+      <h1 class="hero__title">
+        Beaming<br>
+        <em>Confidence</em>
+      </h1>
+
+      <!--- Hero Subheading --->
+      <p class="hero__sub">Elevate your glow with Sidéral.</p>
+
+      <!--- Call to Action Buttons --->
+      <div class="hero__ctas">
+        <a href="Products.html" class="btn-primary">Shop Now</a>
+        <a href="Booking.html" class="btn-ghost">Book a Session</a>
+      </div>
+
+    </div>
+
+    <!--- Animated Scroll Indicator --->
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+
+  </section>
+
+  <!--- Marquee Ticker — Scrolling Text Banner --->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Luxury Beauty</span><span class="marquee__sep">✦</span>
+      <span>Cosmic Glow</span><span class="marquee__sep">✦</span>
+      <span>Sidéral</span><span class="marquee__sep">✦</span>
+      <span>Elevate Your Radiance</span><span class="marquee__sep">✦</span>
+      <span>Luxury Beauty</span><span class="marquee__sep">✦</span>
+      <span>Cosmic Glow</span><span class="marquee__sep">✦</span>
+      <span>Sidéral</span><span class="marquee__sep">✦</span>
+      <span>Elevate Your Radiance</span><span class="marquee__sep">✦</span>
+      <!--- Duplicated below for a seamless infinite loop --->
+      <span>Luxury Beauty</span><span class="marquee__sep">✦</span>
+      <span>Cosmic Glow</span><span class="marquee__sep">✦</span>
+      <span>Sidéral</span><span class="marquee__sep">✦</span>
+      <span>Elevate Your Radiance</span><span class="marquee__sep">✦</span>
+      <span>Luxury Beauty</span><span class="marquee__sep">✦</span>
+      <span>Cosmic Glow</span><span class="marquee__sep">✦</span>
+      <span>Sidéral</span><span class="marquee__sep">✦</span>
+      <span>Elevate Your Radiance</span><span class="marquee__sep">✦</span>
+    </div>
+    
+  </div>
+
+  <!--- Intro Statement Section — Brand Philosophy --->
+  <section class="intro reveal">
+    <div class="intro__inner">
+
+      <!--- Section Label --->
+      <p class="intro__label">Our Philosophy</p>
+
+      <!--- Intro Heading --->
+      <h2 class="intro__heading">
+        Beauty that moves<br>
+        <em>with you.</em>
+      </h2>
+
+      <!--- Intro Body Text — replace with your brand statement --->
+      <p class="intro__text">
+         Sidéral made with elegance.
+      </p>
+
+      <!--- Link to About Page --->
+      <a href="About.html" class="btn-ghost">Our Story</a>
+
+    </div>
+  </section>
+
+  <!--- Featured Products Section --->
+  <section class="featured reveal">
+
+    <!--- Section Header Row --->
+    <div class="featured__header">
+      <p class="featured__label">Editor's Picks</p>
+      <h2 class="featured__heading">Featured Products</h2>
+      <a href="Products.html" class="featured__all">View All →</a>
+    </div>
+
+    <!--- Product Cards Grid --->
+    <div class="featured__grid">
+
+      <!--- Featured Product 1 --->
+      <a href="Products.html" class="feat-card reveal">
+        <!--- Product Image — replace background with url(images/yourimage.jpg) center/cover --->
+        <div class="feat-card__img feat-card__img--1"></div>
+        <div class="feat-card__body">
+          <p class="feat-card__cat">Skin</p>
+          <h3 class="feat-card__name">Cosmic Glow Serum</h3>
+          <span class="feat-card__price">$48</span>
+        </div>
+      </a>
+
+      <!--- Featured Product 2 --->
+      <a href="Products.html" class="feat-card reveal">
+        <!--- Product Image — replace background with url(images/yourimage.jpg) center/cover --->
+        <div class="feat-card__img feat-card__img--2"></div>
+        <div class="feat-card__body">
+          <p class="feat-card__cat">Eye</p>
+          <h3 class="feat-card__name">Stellar Eye Palette</h3>
+          <span class="feat-card__price">$62</span>
+        </div>
+      </a>
+
+      <!--- Featured Product 3 --->
+      <a href="Products.html" class="feat-card reveal">
+        <!--- Product Image — replace background with url(images/yourimage.jpg) center/cover --->
+        <div class="feat-card__img feat-card__img--3"></div>
+        <div class="feat-card__body">
+          <p class="feat-card__cat">Body</p>
+          <h3 class="feat-card__name">Moonlit Body Oil</h3>
+          <span class="feat-card__price">$42</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+ <!--- Editorial Banner — Full Width Video with CTA --->
+<section class="banner reveal">
+
+  <!--- Background Video — replace src with your actual video file --->
+  <video
+    class="banner__video"
+    src="videos/StockFreeModelVideo2.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    poster="images/BlackWoman.jpeg"
+  ></video>
+
+  <!--- Dark Overlay so text stays readable over the video --->
+  <div class="banner__dim"></div>
+
+  <!--- Banner Text and Call to Action --->
+  <div class="banner__content">
+    <p class="banner__label">Now Booking</p>
+    <h2 class="banner__heading">Your Glow<br><em>Awaits</em></h2>
+    <!--- Banner Call to Action --->
+    <a href="Booking.html" class="btn-primary">Book a Session</a>
+  </div>
+
+</section>
+
+  <!--- Values Row — Three Brand Pillars --->
+  <section class="values reveal">
+
+    <!--- Value 1 --->
+    <div class="values__item">
+      <span class="values__icon"><i class="fa-regular fa-star"></i></span>
+      <h3 class="values__title">Luxury Ingredients</h3>
+      <p class="values__text">Every formula starts with the finest botanical and clean-beauty actives.</p>
+    </div>
+
+    <!--- Value 2 --->
+    <div class="values__item">
+      <span class="values__icon"><i class="fa-regular fa-gem"></i></span>
+      <h3 class="values__title">Crafted with Care</h3>
+      <p class="values__text">Small-batch, intentional production rooted in tradition.</p>
+    </div>
+
+    <!--- Value 3 --->
+    <div class="values__item">
+      <span class="values__icon"><i class="fa-regular fa-heart"></i></span>
+      <h3 class="values__title">For Every Glow</h3>
+      <p class="values__text">Products and services designed to celebrate beauty in every shade.</p>
+    </div>
+
+  </section>
+
+  <!--- Instagram Gallery Strip --->
+  <section class="gallery reveal">
+
+    <!--- Gallery Header --->
+    <p class="gallery__label">Follow the Glow</p>
+    <h2 class="gallery__heading">@Sidéral</h2>
+
+    <!--- Gallery Grid — replace backgrounds with real Instagram image URLs --->
+    <div class="gallery__grid">
+      <div class="gallery__cell gallery__cell--1"></div>
+      <div class="gallery__cell gallery__cell--2"></div>
+      <div class="gallery__cell gallery__cell--3"></div>
+      <div class="gallery__cell gallery__cell--4"></div>
+      <div class="gallery__cell gallery__cell--5"></div>
+      <div class="gallery__cell gallery__cell--6"></div>
+    </div>
+
+  </section>
+
+</main>
+
+<!--- Site Footer --->
+<footer class="site-footer">Created by Noah C. Jones</footer>
+
+<!--- Menu Toggle Script — handles open/close for all pages --->
+<script src="js/main.js"></script>
+
+</body>
+</html>
