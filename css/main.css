@@ -848,9 +848,9 @@ main {
 
 .feat-card:hover .feat-card__img { transform: scale(1.05); }
 
-.feat-card__img--1 { background: url(/images/MockupSerum.jpg) center / cover no-repeat; }
-.feat-card__img--2 { background: url(/images/EyePalette.jpg) center / cover no-repeat; }
-.feat-card__img--3 { background: url(/images/BodyOil.jpg) center / cover no-repeat; }
+.feat-card__img--1 { background: url(../images/MockupSerum.jpg) center / cover no-repeat; }
+.feat-card__img--2 { background: url(../images/EyePalette.jpg) center / cover no-repeat; }
+.feat-card__img--3 { background: url(../images/BodyOil.jpg) center / cover no-repeat; }
 
 .feat-card__body {
     padding: 18px 20px 22px;
@@ -1084,11 +1084,11 @@ main {
 }
 
 .gallery__cell--1 { background: url(../images/Kwesi.jpg) center / cover no-repeat; }
-.gallery__cell--2 { background: url(/images/Gideon-Hezekiah.jpg) center / cover no-repeat; }
-.gallery__cell--3 { background: url(/images/KhalifaHussein.jpg) center / cover no-repeat; }
-.gallery__cell--4 { background: url(/images/JessicaFelicio.jpg) center / cover no-repeat; }
-.gallery__cell--5 { background: url(/images/OyeShotThis.jpg) center / cover no-repeat; }
-.gallery__cell--6 { background: url(/images/ModelForGoodFaces.jpg) center / cover no-repeat; }
+.gallery__cell--2 { background: url(../images/Gideon-Hezekiah.jpg) center / cover no-repeat; }
+.gallery__cell--3 { background: url(../images/KhalifaHussein.jpg) center / cover no-repeat; }
+.gallery__cell--4 { background: url(../images/JessicaFelicio.jpg) center / cover no-repeat; }
+.gallery__cell--5 { background: url(../images/OyeShotThis.jpg) center / cover no-repeat; }
+.gallery__cell--6 { background: url(../images/ModelForGoodFaces.jpg) center / cover no-repeat; }
 
 /* =====================================================
    CONTACT PAGE
@@ -1483,14 +1483,14 @@ main {
 .product-card:hover .product-card__image { transform: scale(1.05); }
 
 
-.product-card__image--1 { background: url(/images/MockupSerum.jpg) center / cover no-repeat; }
-.product-card__image--2 { background: url(/images/LipElixer.jpg) center / cover no-repeat; }
-.product-card__image--3 { background: url(/images/EyePalette.jpg) center / cover no-repeat; }
-.product-card__image--4 { background: url(/images/MistSpray.jpg) center / cover no-repeat; }
-.product-card__image--5 { background: url(/images/BodyOil.jpg) center / cover no-repeat; }
-.product-card__image--6 { background: url(/images/LashPhoto.jpg) center / cover no-repeat; }
-.product-card__image--7 { background: url(/images/LipGloss.jpg) center / cover no-repeat; }
-.product-card__image--8 { background: url(/images/SugarScrub.jpg) center / cover no-repeat; }
+.product-card__image--1 { background: url(../images/MockupSerum.jpg) center / cover no-repeat; }
+.product-card__image--2 { background: url(../images/LipElixer.jpg) center / cover no-repeat; }
+.product-card__image--3 { background: url(../images/EyePalette.jpg) center / cover no-repeat; }
+.product-card__image--4 { background: url(../images/MistSpray.jpg) center / cover no-repeat; }
+.product-card__image--5 { background: url(../images/BodyOil.jpg) center / cover no-repeat; }
+.product-card__image--6 { background: url(../images/LashPhoto.jpg) center / cover no-repeat; }
+.product-card__image--7 { background: url(../images/LipGloss.jpg) center / cover no-repeat; }
+.product-card__image--8 { background: url(../images/SugarScrub.jpg) center / cover no-repeat; }
 
 .product-card__wishlist {
     position: absolute;
@@ -1842,9 +1842,9 @@ main {
     aspect-ratio: 3 / 4;
 }
 
-.carousel__img--1 {background: url(/images/Gideon-Hezekiah.jpg) center / cover no-repeat; }
-.carousel__img--2 { background: url(/images/OyeShotThis.jpg) center / cover no-repeat; }
-.carousel__img--3 { background: url(/images/JessicaFelicio.jpg) center / cover no-repeat; }
+.carousel__img--1 {background: url(../images/Gideon-Hezekiah.jpg) center / cover no-repeat; }
+.carousel__img--2 { background: url(../images/OyeShotThis.jpg) center / cover no-repeat; }
+.carousel__img--3 { background: url(../images/JessicaFelicio.jpg) center / cover no-repeat; }
 
 .carousel__btn {
     position: absolute;
@@ -1987,9 +1987,9 @@ main {
     background-repeat: no-repeat;
 }
 
-.about-pair__img--1 { background-image: url(/images/Gideon-Hezekiah.jpg); }
-.about-pair__img--2 { background-image: url(/images/OyeShotThis.jpg); }
-.about-pair__img--3 { background-image: url(/images/JessicaFelicio.jpg); }
+.about-pair__img--1 { background-image: url(../images/Gideon-Hezekiah.jpg); }
+.about-pair__img--2 { background-image: url(../images/OyeShotThis.jpg); }
+.about-pair__img--3 { background-image: url(../images/JessicaFelicio.jpg); }
 
 .about-pair__text {
     padding: 52px 48px;
