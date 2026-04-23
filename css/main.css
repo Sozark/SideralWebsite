@@ -849,7 +849,7 @@ main {
 .feat-card:hover .feat-card__img { transform: scale(1.05); }
 
 .feat-card__img--1 { background: url(/images/MockupSerum.jpg) center / cover no-repeat; }
-.feat-card__img--2 { background: url(/images/EyePallette.jpg) center / cover no-repeat; }
+.feat-card__img--2 { background: url(/images/EyePalette.jpg) center / cover no-repeat; }
 .feat-card__img--3 { background: url(/images/BodyOil.jpg) center / cover no-repeat; }
 
 .feat-card__body {
