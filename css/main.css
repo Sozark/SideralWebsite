@@ -1083,7 +1083,7 @@ main {
     transform: scale(0.98);
 }
 
-.gallery__cell--1 { background: url(/images/Kwesi.jpg) center / cover no-repeat; }
+.gallery__cell--1 { background: url(../images/Kwesi.jpg) center / cover no-repeat; }
 .gallery__cell--2 { background: url(/images/Gideon-Hezekiah.jpg) center / cover no-repeat; }
 .gallery__cell--3 { background: url(/images/KhalifaHussein.jpg) center / cover no-repeat; }
 .gallery__cell--4 { background: url(/images/JessicaFelicio.jpg) center / cover no-repeat; }
